@@ -1,31 +1,26 @@
 /* 
-  Ejercicio 1. Refactoriza el componente convirtiéndolo en un componente
-  presentacional eliminando los elementos que no sean necesarios 
+  Ejercicio 1. Refactoriza el componente para mostrar:
+  - El titulo
+  - La imagen
+  - El rating
+
+  Has de utilizar las classes movie para el contenedor y la clase posterImage para la imagen
 */
-import React, { Component } from 'react';
-
-export class MovieItem extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <p> Titulo:  {this.props.title} </p>
-      </div>
-    );
-  }
-}
-
-
-/* 
-// SOLUCIÓN
 
 import React from 'react';
+import './movieItem.css';
 
 export const MovieItem = props =>
   <div>
-    <p> Titulo:  {props.title} </p>
+    <p> {props.title} </p>
+  </div>
+
+/* 
+  // SOLUCIÓN
+
+  <div className="movie">
+    <img src={props.poster_image}  className="posterImage" />
+    <h4> {props.title} </h4>
+    <p> Rating:  {props.rating} </p>
   </div>
 */

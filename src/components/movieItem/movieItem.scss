@@ -1,0 +1,10 @@
+.movie{
+  display: flex;
+  flex-direction: column;
+  .posterImage{
+    height: 150px;
+    width: 100px;
+  }
+  padding: 1%;
+  border-bottom: 1px solid black;
+}
