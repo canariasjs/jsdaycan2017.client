@@ -39,3 +39,13 @@ funciones de su container padre, se plantea el siguiente ejercicio:
 
 - Refactorizar el componente MovieItem al formato funcional, de forma que será una
   arrow function que recibe props por parámetros y retorna el JSX.
+
+# Paso 2
+
+En este paso crearemos un json con películas mockeadas desde la API GraphQL que serán cargadas desde el container Movies.
+Por cada película, mostraremos un componente MovieItem con los datos correspondientes.
+
+Dado que nuestro componente MovieItem solo muestra el título, se plantea el siguiente ejercicio:
+
+- Refactorizar el componente MovieItem para que muestre, además del título, la imagen y el rating.
+
