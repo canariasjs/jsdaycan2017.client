@@ -26,3 +26,16 @@ Para la implementación de estilos hemos añadido React-Bootstrap y e integrado 
 Para consultar la API Graph hemos añadido apollo-client
 
 Hemos añadido stylelint y el stylelint.rc para lintear el codigo sass.
+
+# Paso 1
+
+En este paso hemos creado dos tipos de componente:
+- Movies: un componente container
+- MovieItem: un componente presentacional
+
+Dado que los componentes presentacionales no necesitan tener estado propio,
+ya que utilizan los datos que reciben de su container padre y a su vez, ejecutan
+funciones de su container padre, se plantea el siguiente ejercicio:
+
+- Refactorizar el componente MovieItem al formato funcional, de forma que será una
+  arrow function que recibe props por parámetros y retorna el JSX.
