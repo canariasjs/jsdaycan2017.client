@@ -1,0 +1,55 @@
+{
+  "data": {
+    "allMovies": [
+      {
+        "id": 1,
+        "title": "The Imitation Game",
+        "description": "During World War II, mathematician Alan Turing tries to crack the enigma code with help from fellow mathematicians.",
+        "poster_image": "https://images-na.ssl-images-amazon.com/images/M/MV5BOTgwMzFiMWYtZDhlNS00ODNkLWJiODAtZDVhNzgyNzJhYjQ4L2ltYWdlXkEyXkFqcGdeQXVyNzEzOTYxNTQ@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        "rating": 5
+      },
+      {
+        "id": 2,
+        "title": "Doctor Strange",
+        "description": "While on a journey of physical and spiritual healing, a brilliant neurosurgeon is drawn into the world of the mystic arts.",
+        "poster_image": "http://www.goodillustration.com/blog/wp-content/uploads/2016/11/drstrange2.jpg",
+        "rating": 7.6
+      },
+      {
+        "id": 3,
+        "title": "Blade Runner",
+        "description": "In a cyberpunk vision of the future, man has developed the technology to create replicants, human clones used to serve in the colonies outside Earth but with fixed lifespans. In Los Angeles, 2019, Deckard is a Blade Runner, a cop who specializes in terminating replicants. Originally in retirement, he is forced to re-enter the force when four replicants escape from an off-world colony to Earth.",
+        "poster_image": "http://cdn2.thr.com/sites/default/files/2017/05/blade_runner_xlg-embed.jpg",
+        "rating": 8.3
+      },
+      {
+        "id": 4,
+        "title": "The Dark Knight",
+        "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+        "poster_image": "https://images-na.ssl-images-amazon.com/images/I/51KnFPZUIAL._SY450_.jpg",
+        "rating": 4.5
+      },
+      {
+        "id": 5,
+        "title": "Inception",
+        "description": "A thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+        "poster_image": "http://cdn.collider.com/wp-content/uploads/Inception-movie-poster-7.jpg",
+        "rating": 4
+      },
+      {
+        "id": 6,
+        "title": "The Matrix",
+        "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+        "poster_image": "https://images-na.ssl-images-amazon.com/images/I/51k1epcewKL._SY300_.jpg",
+        "rating": 4
+      },
+      {
+        "id": 7,
+        "title": "The Martian",
+        "description": "The Martian is a 2015 science fiction film directed by Ridley Scott. The screenplay by Drew Goddard is based on Andy Weir's 2011 novel of the same name. Matt Damon stars as an astronaut who is mistakenly presumed dead and left behind on Mars. The film depicts his struggle to survive and others' efforts to rescue him. The film's ensemble cast also features Jessica Chastain, Kristen Wiig, Jeff Daniels, Michael Peña, Kate Mara, Sean Bean, Sebastian Stan, Donald Glover, Aksel Hennie, and Chiwetel Ejiofor.",
+        "poster_image": "https://upload.wikimedia.org/wikipedia/en/c/cd/The_Martian_film_poster.jpg",
+        "rating": 4
+      }
+    ]
+  }
+}
