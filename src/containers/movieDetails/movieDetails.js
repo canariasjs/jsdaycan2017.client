@@ -9,7 +9,6 @@ import './movieDetails.css';
 
 /* Ejercicio 2.
   Muestra en el componente el titulo (h4) y la descripción de la película (<p>)
-  Has de asociar este state recibido al state del componente.
 */
 
 class MovieDetails extends Component {

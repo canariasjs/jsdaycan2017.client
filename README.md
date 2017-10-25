@@ -49,3 +49,12 @@ Dado que nuestro componente MovieItem solo muestra el título, se plantea el sig
 
 - Refactorizar el componente MovieItem para que muestre, además del título, la imagen y el rating.
 
+# Paso 3
+
+En este paso añadiremos un router a nuestra aplicación. Para ello crearemos un nuevo container que se encargará 
+de mostrar los detalles de una película y el cual recibirá la pelicula en sus props desde el router.
+
+Una vez que tenemos los datos en las props del componente, se plantean los siguientes ejercicios:
+
+- Asociar la pelicula que recibimos por parámetro al state del coponente
+- Mostrar en el componente el titulo (h4) y la descripción de la película (<p>)
