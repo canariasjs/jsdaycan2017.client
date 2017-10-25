@@ -1,0 +1,14 @@
+.navbar-brand {
+  color: #00c3ff !important; }
+
+.nav {
+  margin-top: 15px; }
+  .nav .link {
+    color: white;
+    margin: 15px; }
+    .nav .link:hover {
+      text-decoration: none;
+      color: grey; }
+    .nav .link:focus {
+      color: #8accf1;
+      text-decoration: none; }

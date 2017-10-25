@@ -1,0 +1,23 @@
+.navbar-brand{
+  color: rgb(0, 195, 255) !important;
+}
+.nav{
+  margin-top: 15px;
+  .link{
+    color: white;
+    margin: 15px;
+    &:hover{
+      text-decoration: none;
+      color: grey;
+    }
+    &:focus{
+      color: rgb(138, 204, 241);
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+
+
