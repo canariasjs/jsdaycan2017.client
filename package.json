@@ -3,18 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client": "^1.9.3",
+    "axios": "^0.16.2",
+    "graphql-tag": "^2.4.2",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
+    "raf": "^3.4.0",
     "react": "^16.0.0",
+    "react-apollo": "^1.4.16",
+    "react-bootstrap": "0.31.3",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "axios": "^0.16.2",
-    "apollo-client": "^1.9.3",
-    "graphql-tag": "^2.4.2",
-    "react-apollo": "^1.4.16",
-    "react-bootstrap": "^0.31.3"
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
@@ -22,7 +23,8 @@
     "start-js": "react-scripts start",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --setupTestFrameworkScriptFile=raf/polyfill",
+    "test-without-polyfill": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
