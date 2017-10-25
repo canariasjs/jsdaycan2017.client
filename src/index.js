@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
+
 import './index.css';
-import Movies from './containers/movies/movies';
+import Router from './router';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Movies />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <Router />
+  </BrowserRouter>
+  , document.getElementById('root')
+);
 registerServiceWorker();
