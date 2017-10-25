@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './movies.css';
 
 import MoviesData from './films.json';
@@ -10,13 +11,14 @@ class Movies extends Component {
     return (
       <div className="moviesContainer">
         {
-          MoviesData.data.allMovies.map((movie, i) =>
+          MoviesData.data.allMovies.map((movie, i) => 
+          <Link  key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
             <MovieItem 
-              key={i}
               title={movie.title} 
               poster_image={movie.poster_image}
               rating={movie.rating}
             />
+          </Link>
           ) 
         }
       </div>
