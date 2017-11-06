@@ -93,3 +93,13 @@ tendrán las propiedades que nosotros hemos especificado en la query.
 
 Por último, hemos conectado nuestro container component a GraphQL para mostrar los datos recibidos de la API en vez de los datos mockeados.
 
+# Paso 7
+
+
+En este paso hemos conectado nuestro container component moviesDetails a GraphQL para obtener los datos de una pelicula especifica desde la API.
+Para ello, le pasamos a Apollo el id de la pelicula que queremos obtener.
+
+Dado que en el paso 6 ya viste como se creaba una query, se plantea el siguiente ejercicio:
+
+- Actualiza la query moviesById indicándole que parametros debe de tener la película que devuelve la API.
+
