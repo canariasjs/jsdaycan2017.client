@@ -71,3 +71,13 @@ Una vez que tenemos el formulario creado y podemos llamarlo desde el movies cont
 
 - Añadir una propiedad rating al formulario para permitir que el usuario valore la película.
 - Añadir un validador al formulario que controle que el rating esté entre 0 y 10
+
+# Paso 5
+
+En este paso crearemos los botones Edit y Delete en el container movieDetails.
+En este container, al igual que en el caso anterior, llamaremos al container movieForm pero esta vez le pasaremos una película por parámetro.
+Hemos modificado el componente movieForm para que si recibe una película por parametro, rellene el formulario con los datos de esa película.
+
+Una vez tenemos cargado el movieForm desde movieDetails, y se ha modificado el form para recibir la película. Se plantéa el siguiente ejercicio:
+
+- Envíale por parámetro al MovieForm la película que estas viendo en detalles. El formulario se sobreescribirá con la pelicula que reciba por parámetro en componentWillReceiveProps()
