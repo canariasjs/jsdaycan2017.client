@@ -43,5 +43,4 @@ export default graphql(
     options: (props) => ({
       variables: { id: props.match.params.movieId },
     }),
-  })
-  (MovieDetails);
+  })(MovieDetails);
