@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './movieForm.css';
 import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap';
 
+import { graphql, compose, withApollo } from 'react-apollo';
+import { addMovie } from '../../mutations/movies';
+
 /* 
 
   FILM EXAMPLE:
@@ -83,8 +86,8 @@ class MovieForm extends Component {
 
   // Create button
   create = ({title, description, poster_image, year, rating}) => {
-    console.log('Creando pelicula');
-    console.log(this.state.form);
+    this.props.addMovie({ title, description, poster_image, year, rating });
+    this.props.onHide();
   }
 
   render() {
@@ -170,13 +173,13 @@ class MovieForm extends Component {
 
 
             { /* Rating */}
-            <FormGroup controlId="formRating" validationState={this.getValidationRatingState()} >
+            <FormGroup controlId="rating" validationState={this.getValidationRatingState()} >
               <ControlLabel>Rating</ControlLabel>
               <FormControl
                 type="number"
                 value={this.state.form.rating}
                 placeholder="Rating"
-                onChange={this.handleRatingChange}
+                onChange={this.handleFormChange}
               />
               <FormControl.Feedback />
               <HelpBlock>0 - 10</HelpBlock>
@@ -194,4 +197,23 @@ class MovieForm extends Component {
   }
 }
 
-export default MovieForm;
+// Cuando se ejecute addMovie, recibirá los datos por parámetro los cuales pasará a la mutation.
+// Al terminar, ejecutará de nuevo la query allMovies para actualizar la lista de películas
+const addMovieMutation = graphql(addMovie, {
+  props: ({ mutate }) => ({
+    addMovie: ({ title, description, poster_image, year, rating }) =>
+      mutate({
+        variables: { title, description, poster_image, year, rating },
+      }),
+  }),
+  options: {
+    refetchQueries: [
+      'allMovies',
+    ],
+  },
+});
+
+export default compose(
+  addMovieMutation,
+  withApollo,
+)(MovieForm);
