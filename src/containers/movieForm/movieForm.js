@@ -19,12 +19,6 @@ import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from '
   9
 */
 
-/*
-  Ejercicio 1: Añade una propiedad rating al formulario para permitir que el usuario valore la película.
-  Ejercicio 2: Añade un validador al formulario que controle que el rating esté entre 0 y 10
-*/
-
-
 class MovieForm extends Component {
 
   constructor(props){
@@ -40,6 +34,11 @@ class MovieForm extends Component {
       },
     }
   }
+
+  componentWillReceiveProps = () =>{
+    if (this.props.movie) return this.setState({form: this.props.movie });
+  }
+
 
   // ## Form controllers: Controlan el estado del formulario y muestran mensajes 
   // ## si los datos introducidos no son válidos
@@ -62,23 +61,17 @@ class MovieForm extends Component {
 
   getValidationYearState = () => {
     const value = this.state.form.year;
-    const currentDate = new Date();
-
     if (!value) return 'warning';
-    else if (value > currentDate.getFullYear()) return 'error'; 
+    else if (value > new Date().getFullYear()) return 'error'; 
     else return 'success';
   };
 
-  /* Rating validator 
-
   getValidationRatingState = () => {
     const value = this.state.form.rating;
-    const currentDate = new Date();
     if (!value) return 'warning';
     else if (value < 0 || value > 10 ) return 'error'; 
     else return 'success';
   };
-*/
 
 
   // ## Form handlers: Actualizan el estado del formulario cada vez que un valor del formulario cambia
@@ -119,7 +112,7 @@ class MovieForm extends Component {
             <div className="preview">
               <div className="posterImagePreview" >
                 { this.state.form.poster_image && 
-                  <img src={this.state.form.poster_image} width="200px" height="250px" />
+                  <img src={this.state.form.poster_image} alt="Poster" width="200px" height="250px" />
                 }
               </div>
             </div>
@@ -177,7 +170,7 @@ class MovieForm extends Component {
 
 
             { /* Rating */}
-            {/* <FormGroup controlId="formRating" validationState={this.getValidationRatingState()} >
+            <FormGroup controlId="formRating" validationState={this.getValidationRatingState()} >
               <ControlLabel>Rating</ControlLabel>
               <FormControl
                 type="number"
@@ -187,7 +180,7 @@ class MovieForm extends Component {
               />
               <FormControl.Feedback />
               <HelpBlock>0 - 10</HelpBlock>
-            </FormGroup> */}
+            </FormGroup>
         
           </form>
          </Modal.Body>
