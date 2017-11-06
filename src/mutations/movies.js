@@ -31,23 +31,6 @@ export const updateMovie = gql`
     $year: String,
   ) {
     updateMovie(
-    ) {
-      id,
-      title,
-    }
-  }
-`
-/*
-export const updateMovie = gql`
-  mutation updateMovie(
-    $id: Int!,
-    $title: String!, 
-    $description: String, 
-    $poster_image: String, 
-    $rating: Float,
-    $year: String,
-  ) {
-    updateMovie(
       id: $id,
       title: $title,
       description: $description,
@@ -60,4 +43,15 @@ export const updateMovie = gql`
     }
   }
 `
-*/
+
+export const deleteMovie = gql`
+  mutation deleteMovie(
+    $id: Int!, 
+  ) {
+    deleteMovie(
+      id: $id
+    ){
+      id
+    }
+  }
+`
