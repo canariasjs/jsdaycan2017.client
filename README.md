@@ -103,3 +103,12 @@ Dado que en el paso 6 ya viste como se creaba una query, se plantea el siguiente
 
 - Actualiza la query moviesById indicándole que parametros debe de tener la película que devuelve la API.
 
+# Paso 8
+
+En este paso hemos conectado nuestro movieForm container component a GraphQL de forma que cuando pulsemos el boton crear de nuestro formulario,
+ejecutará una mutation.
+
+La mutation la hemos definido en mutations/movies.js de forma que está lista para recibir los datos que necesitamos y ejecutar la peticion.
+
+Por ultimo, a la hora de exportar el container movieForm hemos definido que tras ejecutar la mutation, ejecutaremos de nuevo la query allMovies para refrescar
+automaticamente nuestra lista de películas.
