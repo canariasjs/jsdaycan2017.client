@@ -123,3 +123,12 @@ Posteriormente, hemos definido la mutation al igual que la anterior y la hemos c
 
 Dado que en el paso 8 ya vistes como se define una mutation, se plantea el siguiente ejercicio:
 - Actualiza la mutation updateMovie de forma que puedas enviarle a la API los valores que recibes por parámetro desde el componente container.
+
+# Paso 10
+
+En este paso hemos definido una nueva mutation que nos permitirá eliminar una película.
+
+Las películas se borrarán desde su vista detalle. Para ello hemos actualizado el container movieDetails creando un boton
+que ejecutará el metodo delete, el cual ejecutará la mutation y posteriormente nos llevara a la lista de películas.
+
+Por último, hemos conectado la mutation al container para que pueda ser ejecutada por este.
