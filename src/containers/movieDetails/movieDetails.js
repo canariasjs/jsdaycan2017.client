@@ -4,8 +4,9 @@ import { Button } from 'react-bootstrap';
 import './movieDetails.css';
 
 // Apollo - GraphQL
-import { graphql } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { movieById } from '../../queries/movies';
+import { deleteMovie} from '../../mutations/movies';
 
 
 class MovieDetails extends Component {
@@ -17,6 +18,12 @@ class MovieDetails extends Component {
   open = () => this.setState({ showModal: true });
   close = () => this.setState({ showModal: false });
 
+  // Ejecuta la mutation deleteMovie y luego nos movemos a la ruta /movies 
+  delete = id => {
+    this.props.deleteMovie(id);
+    this.props.history.push("/movies");
+  }
+
   render() {
     if (this.props.data.loading) return <div>Loading</div>;
     const movie = this.props.data.moviesById[0];
@@ -25,7 +32,12 @@ class MovieDetails extends Component {
       <div className="movieDetails">     
         <div className="actionButtons">
           <Button bsStyle="primary" onClick={this.open}> Edit </Button>
-          <Button bsStyle="warning"> Delete </Button>
+          {/* 
+            Es importante llamar el onClick mediante una funcion que llame al this.delete
+            ya que si no lo hacemos, al renderizarse el componente ejecutará el this.delete borrando la película y produciendo
+            un comportamiento inesperado
+          */}
+          <Button bsStyle="warning" onClick={() => this.delete(movie.id)}> Delete </Button>
         </div>
         <img src={movie.poster_image} alt="Poster" width="80px" height="auto" />
         <h4> {movie.title} </h4>
@@ -36,11 +48,27 @@ class MovieDetails extends Component {
   }
 }
 
-// A la hora de hacer la petición al server, le pasaremos el id de la película que queremos obtener.
-// Este valor lo obtenemos desde el router
-export default graphql(
-  movieById, {
-    options: (props) => ({
-      variables: { id: props.match.params.movieId },
-    }),
-  })(MovieDetails);
+const deleteMovieMutation = graphql(deleteMovie, {
+  props: ({ mutate }) => ({
+    deleteMovie: (id) =>
+      mutate({
+        variables: { id }
+      }),
+  }),
+  options: {
+    refetchQueries: [
+      'allMovies',
+    ],
+  },
+});
+
+export default compose(
+  graphql(
+    movieById, {
+      options: (props) => ({
+        variables: { id: props.match.params.movieId },
+      }),
+  }),
+  deleteMovieMutation,
+  withApollo,
+)(MovieDetails)
