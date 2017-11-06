@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MovieForm from '../movieForm/movieForm';
-import { Button } from 'react-bootstrap';
+import { Button, Glyphicon } from 'react-bootstrap';
 import './movieDetails.css';
 
 // Apollo - GraphQL
@@ -30,18 +30,22 @@ class MovieDetails extends Component {
 
     return (
       <div className="movieDetails">     
-        <div className="actionButtons">
-          <Button bsStyle="primary" onClick={this.open}> Edit </Button>
-          {/* 
-            Es importante llamar el onClick mediante una funcion que llame al this.delete
-            ya que si no lo hacemos, al renderizarse el componente ejecutará el this.delete borrando la película y produciendo
-            un comportamiento inesperado
-          */}
-          <Button bsStyle="warning" onClick={() => this.delete(movie.id)}> Delete </Button>
+        <Button className="baseButton" onClick={this.open}> 
+          <Glyphicon glyph="edit" className="edit" /> Edit 
+        </Button>
+        <Button className="baseButton" onClick={() => this.delete(movie.id)}> 
+          <Glyphicon glyph="trash" className="delete" /> Delete 
+        </Button>
+        <div className="movieContainer">
+          <img src={movie.poster_image} alt="Poster" width="300px" height="100%" />
+          <div className="movieData">
+            <h4> {movie.title} </h4>       
+            <h5> {movie.year} </h5>
+            <p> Rating: {movie.rating } </p>
+            <p> {movie.description} </p> 
+      
+          </div>
         </div>
-        <img src={movie.poster_image} alt="Poster" width="80px" height="auto" />
-        <h4> {movie.title} </h4>
-        <p> {movie.description} </p> 
         <MovieForm show={this.state.showModal} movie={movie} onHide={this.close} />
       </div>
     );

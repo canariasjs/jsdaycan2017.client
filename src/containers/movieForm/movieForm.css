@@ -4,26 +4,9 @@
 textarea {
   resize: none !important; }
 
-.preview {
-  display: flex;
-  flex-direction: row; }
-
 .posterImagePreview {
   flex: 1;
   background: url("https://critics.io/img/movies/poster-placeholder.png");
   background-size: cover;
   height: 250px;
   width: 150px; }
-
-.trailerPreview {
-  flex: 3;
-  background: url("http://www.playingclil.eu/wp-content/themes/collections/images/video-placeholder.svg");
-  background-size: cover;
-  height: 250px;
-  width: 150px; }
-
-.clearActorsButton {
-  margin-left: 5px;
-  border-radius: 0px;
-  height: 25px;
-  margin-bottom: 1px; }

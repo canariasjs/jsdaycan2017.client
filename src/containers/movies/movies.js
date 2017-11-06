@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Glyphicon} from 'react-bootstrap';
 import './movies.css';
 
 import MovieForm from '../movieForm/movieForm';
 import { MovieItem } from '../../components/movieItem/movieItem';
 
-// Herramientas del cliente apollo para conectar con el server
 import { graphql } from 'react-apollo';
-// Query que queremos ejecutar
 import { allMovies } from '../../queries/movies';
 
 class Movies extends Component {
@@ -25,28 +23,39 @@ class Movies extends Component {
 
   render() {
 
-    if (this.props.data.loading) {
-      return (<div>Loading</div>)
-    } 
+    if (this.props.data.loading) return <div>Loading</div>;
 
     return (
-
-        <div className="moviesContainer">
-          <Button bsStyle="primary" onClick={this.open}> New movie </Button>
+      <div className="moviesContainer">
+        <Button className="baseButton" onClick={this.open}>
+          <Glyphicon glyph="pencil" className="new" /> New movie 
+        </Button>
+        <div className="list">
           { 
-            // Ahora no usaremos los datos mockeados, sino allMovies procendente del GraphQL Server
             this.props.data.allMovies.map((movie, i) => 
-            <Link  key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
-              <MovieItem 
-                title={movie.title} 
-                poster_image={movie.poster_image}
-                rating={movie.rating}
-              />
-            </Link>
+              <Link className="movieItem" key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
+                <MovieItem 
+                  title={movie.title} 
+                  poster_image={movie.poster_image}
+                  rating={movie.rating}
+                />
+              </Link>
             ) 
           }
-          <MovieForm show={this.state.showModal} onHide={this.close} />
+                    { 
+            this.props.data.allMovies.map((movie, i) => 
+              <Link className="movieItem" key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
+                <MovieItem 
+                  title={movie.title} 
+                  poster_image={movie.poster_image}
+                  rating={movie.rating}
+                />
+              </Link>
+            ) 
+          }
         </div>
+        <MovieForm show={this.state.showModal} onHide={this.close} />
+      </div>
     );
   }
 }

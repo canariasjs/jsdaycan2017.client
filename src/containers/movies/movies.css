@@ -1,4 +1,16 @@
 .moviesContainer {
-  height: 87vh;
-  overflow-y: scroll;
-  padding: 5%; }
+  padding: 2% 5% 2% 5%; }
+  .moviesContainer .new {
+    color: yellowgreen; }
+  .moviesContainer .list {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    width: 100%;
+    overflow-y: scroll;
+    height: 70vh; }
+    .moviesContainer .list .movieItem {
+      flex: 1;
+      cursor: pointer;
+      text-decoration: none;
+      color: #2f2f2f; }

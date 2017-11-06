@@ -3,3 +3,18 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.baseButton, .baseButton:focus{
+  text-shadow: none;
+  background: #2f2f2f;
+  color: white;
+  margin: 2px;
+}
+
+.baseButton:hover{
+  text-shadow: none;
+  color: #2f2f2f;
+  background: white;
+  border: 1px solid #2f2f2f;
+}
+

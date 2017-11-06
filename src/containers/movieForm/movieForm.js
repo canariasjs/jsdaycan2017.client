@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './movieForm.css';
-import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap';
+import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock, Grid, Row, Col } from 'react-bootstrap';
 
 import { graphql, compose, withApollo } from 'react-apollo';
 import { addMovie, updateMovie } from '../../mutations/movies';
@@ -107,92 +107,90 @@ class MovieForm extends Component {
           </Modal.Header>
           <Modal.Body>
           <form>
-
-             { /* Poster y trailer */}
-            <FormGroup controlId="poster_image" >
-              <ControlLabel>Poster</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.form.poster_image}
-                placeholder="Poster image url"
-                onChange={this.handleFormChange}
-              />
-            </FormGroup>
-
-            { /* Previe del trailer y la imagen */ }
-            <div className="preview">
-              <div className="posterImagePreview" >
-                { this.state.form.poster_image && 
-                  <img src={this.state.form.poster_image} alt="Poster" width="200px" height="250px" />
-                }
-              </div>
-            </div>
+          <Grid style={{ width: '100%'}}>
+              <Row >
+                <Col xs={6} md={8}>  
+                  <FormGroup
+                    controlId="title"
+                    validationState={this.getValidationTitleState()}
+                  >
+                    <ControlLabel>Title</ControlLabel>
+                    <FormControl
+                      type="text"
+                      value={this.state.form.title}
+                      placeholder="Title"
+                      onChange={this.handleFormChange}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>More than 5 characters</HelpBlock>
+                  </FormGroup>
 
 
-            { /* Title */}
-            <FormGroup
-              controlId="title"
-              validationState={this.getValidationTitleState()}
-            >
-              <ControlLabel>Title</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.form.title}
-                placeholder="Title"
-                onChange={this.handleFormChange}
-              />
-              <FormControl.Feedback />
-              <HelpBlock>More than 5 characters</HelpBlock>
-            </FormGroup>
+                  { /* Description */}
+                  <FormGroup
+                    controlId="description"
+                    validationState={this.getValidationDescriptionState()}
+                  >
+                    <ControlLabel>Description</ControlLabel>
+                    <FormControl
+                      type="text"
+                      componentClass="textarea"
+                      value={this.state.form.description}
+                      placeholder="Description"
+                      onChange={this.handleFormChange}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>More than 50 characters</HelpBlock>
+                  </FormGroup>
+
+                  { /* Year */}
+                  <FormGroup
+                    controlId="year"
+                    validationState={this.getValidationYearState()}
+                  >
+                    <ControlLabel>Year</ControlLabel>
+                    <FormControl
+                      type="number"
+                      value={this.state.form.year}
+                      placeholder="Year"
+                      onChange={this.handleFormChange}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>Cannot add films that has been not released</HelpBlock>
+                  </FormGroup>
 
 
-            { /* Description */}
-            <FormGroup
-              controlId="description"
-              validationState={this.getValidationDescriptionState()}
-            >
-              <ControlLabel>Description</ControlLabel>
-              <FormControl
-                type="text"
-                componentClass="textarea"
-                value={this.state.form.description}
-                placeholder="Description"
-                onChange={this.handleFormChange}
-              />
-              <FormControl.Feedback />
-              <HelpBlock>More than 50 characters</HelpBlock>
-            </FormGroup>
-
-            { /* Year */}
-            <FormGroup
-              controlId="year"
-              validationState={this.getValidationYearState()}
-            >
-              <ControlLabel>Year</ControlLabel>
-              <FormControl
-                type="number"
-                value={this.state.form.year}
-                placeholder="Year"
-                onChange={this.handleFormChange}
-              />
-              <FormControl.Feedback />
-              <HelpBlock>Cannot add films that has been not released</HelpBlock>
-            </FormGroup>
-
-
-            { /* Rating */}
-            <FormGroup controlId="rating" validationState={this.getValidationRatingState()} >
-              <ControlLabel>Rating</ControlLabel>
-              <FormControl
-                type="number"
-                value={this.state.form.rating}
-                placeholder="Rating"
-                onChange={this.handleFormChange}
-              />
-              <FormControl.Feedback />
-              <HelpBlock>0 - 10</HelpBlock>
-            </FormGroup>
-        
+                  { /* Rating */}
+                  <FormGroup controlId="rating" validationState={this.getValidationRatingState()} >
+                    <ControlLabel>Rating</ControlLabel>
+                    <FormControl
+                      type="number"
+                      value={this.state.form.rating}
+                      placeholder="Rating"
+                      onChange={this.handleFormChange}
+                    />
+                    <FormControl.Feedback />
+                    <HelpBlock>0 - 10</HelpBlock>
+                  </FormGroup>
+                </Col>
+                <Col xs={12} md={4}>
+                  <FormGroup controlId="poster_image" >
+                    <ControlLabel>Poster</ControlLabel>
+                    <FormControl
+                      type="text"
+                      value={this.state.form.poster_image}
+                      placeholder="Poster image url"
+                      onChange={this.handleFormChange}
+                    />
+                  </FormGroup>
+                  <div className="posterImagePreview" >
+                    { this.state.form.poster_image && 
+                      <img src={this.state.form.poster_image} alt="Poster" width="200px" height="250px" />
+                    }
+                  </div>
+                </Col>
+              </Row>
+          </Grid>            
           </form>
          </Modal.Body>
 
@@ -200,12 +198,11 @@ class MovieForm extends Component {
 
             {/* Si recibo una película por props, estoy editando. Si no, estoy creando */}
             { this.props.movie &&
-              <Button onClick={ () => this.update(this.state.form)}>Update</Button>
+              <Button className="baseButton" onClick={ () => this.update(this.state.form)}>Update</Button>
             }
             { !this.props.movie &&
-              <Button onClick={ () => this.create(this.state.form)}>Create</Button>
+              <Button className="baseButton" onClick={ () => this.create(this.state.form)}>Create</Button>
             }
-            <Button onClick={this.props.onHide}>Close</Button>
           </Modal.Footer>
         </Modal>
     );

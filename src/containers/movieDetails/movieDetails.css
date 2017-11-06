@@ -1,7 +1,15 @@
 .movieDetails {
-  padding: 5%; }
-
-.actionButtons {
-  margin-bottom: 5px; }
-  .actionButtons button {
-    margin-right: 5px; }
+  height: 87vh;
+  overflow-y: scroll;
+  padding: 2% 5% 2% 5%; }
+  .movieDetails .edit {
+    color: lightseagreen; }
+  .movieDetails .delete {
+    color: orangered; }
+  .movieDetails .movieContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px; }
+    .movieDetails .movieContainer .movieData {
+      text-align: left;
+      padding-left: 15px; }
