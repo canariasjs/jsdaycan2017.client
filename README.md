@@ -58,3 +58,16 @@ Una vez que tenemos los datos en las props del componente, se plantean los sigui
 
 - Asociar la pelicula que recibimos por parámetro al state del coponente
 - Mostrar en el componente el titulo (h4) y la descripción de la película (<p>)
+
+# Paso 4
+
+En este paso añadiremos un boton en el movies container que nos permite mostrar un modal con un formulario para crear películas.
+En movies container controlaremos si el formulario está abierto o cerrado.
+
+El formulario tendrá su propio estado, el cual será las propiedades de una película. Además añadiremos validadores que nos permitan
+controlar los datos que el usuario está introduciendo.
+
+Una vez que tenemos el formulario creado y podemos llamarlo desde el movies container, se plantean los siguientes ejercicios:
+
+- Añadir una propiedad rating al formulario para permitir que el usuario valore la película.
+- Añadir un validador al formulario que controle que el rating esté entre 0 y 10

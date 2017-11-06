@@ -8,14 +8,13 @@ import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from '
 
   Interestellar
 
+  https://jaumecentelles.files.wordpress.com/2016/05/1-cartel-de-interstellar.jpg?w=210&h=300
+
   Interstellar es una película épica de ciencia ficción estadounidense de 2014, 
   dirigida por Christopher Nolan y protagonizada por Matthew McConaughey, Anne Hathaway, 
   Jessica Chastain, Michael Caine y Matt Damon.
 
   2014
-
-  https://jaumecentelles.files.wordpress.com/2016/05/1-cartel-de-interstellar.jpg?w=210&h=300
-  https://www.youtube.com/embed/zSWdZVtXT7E?rel=0&amp;showinfo=0 
 
   9
 */
@@ -23,7 +22,6 @@ import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from '
 /*
   Ejercicio 1: Añade una propiedad rating al formulario para permitir que el usuario valore la película.
   Ejercicio 2: Añade un validador al formulario que controle que el rating esté entre 0 y 10
-
 */
 
 
@@ -39,17 +37,7 @@ class MovieForm extends Component {
         poster_image: '',
         year: '',
         rating: '',
-        directors: [ ],
-        trailer: {
-          width: 560,
-          height: 315,
-          frameborder: 0,
-          iframe: '',
-          src: '',
-        },
-        actors: [ ]
       },
-      filteredActors: []
     }
   }
 
@@ -96,12 +84,12 @@ class MovieForm extends Component {
   // ## Form handlers: Actualizan el estado del formulario cada vez que un valor del formulario cambia
   handleFormChange = event  => {
     let newForm = {...this.state.form};
-    event.target.id === 'trailer' ? newForm[event.target.id].src = event.target.value : newForm[event.target.id] = event.target.value;
+    newForm[event.target.id] = event.target.value;
     this.setState({form: newForm });
   }
 
   // Create button
-  create = ({title, description, poster_image, year, rating, directors, trailer, actors}) => {
+  create = ({title, description, poster_image, year, rating}) => {
     console.log('Creando pelicula');
     console.log(this.state.form);
   }
@@ -127,27 +115,11 @@ class MovieForm extends Component {
               />
             </FormGroup>
 
-            <FormGroup controlId="trailer">
-              <ControlLabel>Trailer</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.form.trailer.src}
-                placeholder="Trailer url"
-                onChange={this.handleFormChange}
-              />
-              <FormControl.Feedback />
-            </FormGroup>
-
             { /* Previe del trailer y la imagen */ }
             <div className="preview">
               <div className="posterImagePreview" >
                 { this.state.form.poster_image && 
                   <img src={this.state.form.poster_image} width="200px" height="250px" />
-                }
-              </div>
-              <div className="trailerPreview">
-                { this.state.form.trailer.src && 
-                  <iframe src={this.state.form.trailer.src} width="100%" height="250px" />
                 }
               </div>
             </div>
