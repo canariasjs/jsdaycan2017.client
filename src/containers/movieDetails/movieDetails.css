@@ -1,2 +1,7 @@
 .movieDetails {
   padding: 5%; }
+
+.actionButtons {
+  margin-bottom: 5px; }
+  .actionButtons button {
+    margin-right: 5px; }
