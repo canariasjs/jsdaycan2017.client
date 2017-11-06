@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import './movies.css';
 
-import MoviesData from './films.json';
-
 import MovieForm from '../movieForm/movieForm';
-
 import { MovieItem } from '../../components/movieItem/movieItem';
 
+// Herramientas del cliente apollo para conectar con el server
+import { graphql, compose, withApollo } from 'react-apollo';
+// Query que queremos ejecutar
+import { allMovies } from '../../queries/movies';
 
 class Movies extends Component {
 
@@ -24,12 +25,17 @@ class Movies extends Component {
 
   render() {
 
+    if (this.props.data.loading) {
+      return (<div>Loading</div>)
+    } 
+
     return (
 
         <div className="moviesContainer">
           <Button bsStyle="primary" onClick={this.open}> New movie </Button>
-          {
-            MoviesData.data.allMovies.map((movie, i) => 
+          { 
+            // Ahora no usaremos los datos mockeados, sino allMovies procendente del GraphQL Server
+            this.props.data.allMovies.map((movie, i) => 
             <Link  key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
               <MovieItem 
                 title={movie.title} 
@@ -45,4 +51,6 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+// Exportamos el container Movies pero ahora envuelto en un HOC que le inyecta
+// los datos recibidos del server GraphQL
+export default graphql(allMovies)(Movies);
