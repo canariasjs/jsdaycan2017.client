@@ -3,10 +3,10 @@ import MovieForm from '../movieForm/movieForm';
 import { Button } from 'react-bootstrap';
 import './movieDetails.css';
 
-/*
-  Ejercicio 1: Envíale por parámetro al MovieForm la película que estas viendo en detalles.
-  El formulario se sobreescribirá con la pelicula que reciba por parámetro en componentWillReceiveProps()
-*/
+// Apollo - GraphQL
+import { graphql } from 'react-apollo';
+import { movieById } from '../../queries/movies';
+
 
 class MovieDetails extends Component {
   constructor(props){
@@ -18,20 +18,30 @@ class MovieDetails extends Component {
   close = () => this.setState({ showModal: false });
 
   render() {
+    if (this.props.data.loading) return <div>Loading</div>;
+    const movie = this.props.data.moviesById[0];
+
     return (
       <div className="movieDetails">     
         <div className="actionButtons">
           <Button bsStyle="primary" onClick={this.open}> Edit </Button>
           <Button bsStyle="warning"> Delete </Button>
         </div>
-        <img src={this.state.movie.poster_image} alt="Poster" width="80px" height="auto" />
-        <h4> {this.state.movie.title} </h4>
-        <p> {this.state.movie.description} </p> 
-        {/* <MovieForm show={this.state.showModal} onHide={this.close} /> */}
-        <MovieForm show={this.state.showModal} movie={this.state.movie} onHide={this.close} />
+        <img src={movie.poster_image} alt="Poster" width="80px" height="auto" />
+        <h4> {movie.title} </h4>
+        <p> {movie.description} </p> 
+        <MovieForm show={this.state.showModal} movie={movie} onHide={this.close} />
       </div>
     );
   }
 }
 
-export default MovieDetails;
+// A la hora de hacer la petición al server, le pasaremos el id de la película que queremos obtener.
+// Este valor lo obtenemos desde el router
+export default graphql(
+  movieById, {
+    options: (props) => ({
+      variables: { id: props.match.params.movieId },
+    }),
+  })
+  (MovieDetails);
