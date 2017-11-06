@@ -57,4 +57,4 @@ de mostrar los detalles de una película y el cual recibirá la pelicula en sus 
 Una vez que tenemos los datos en las props del componente, se plantean los siguientes ejercicios:
 
 - Asociar la pelicula que recibimos por parámetro al state del coponente
-- Mostrar en el componente el titulo (h4) y la descripción de la película (<p>)
+- Mostrar en el componente el titulo (h4) y la descripción de la película (p)
