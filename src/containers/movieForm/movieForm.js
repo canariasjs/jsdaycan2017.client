@@ -3,7 +3,7 @@ import './movieForm.css';
 import { Button, Modal, FormControl, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap';
 
 import { graphql, compose, withApollo } from 'react-apollo';
-import { addMovie } from '../../mutations/movies';
+import { addMovie, updateMovie } from '../../mutations/movies';
 
 /* 
 
@@ -87,6 +87,14 @@ class MovieForm extends Component {
   // Create button
   create = ({title, description, poster_image, year, rating}) => {
     this.props.addMovie({ title, description, poster_image, year, rating });
+    this.props.onHide();
+  }
+
+  // Update button
+
+  // A diferencia de create, necesitamos el ID para poder actualizar una película
+  update = ({id, title, description, poster_image, year, rating}) => {
+    this.props.updateMovie({ id, title, description, poster_image, year, rating });
     this.props.onHide();
   }
 
@@ -189,7 +197,14 @@ class MovieForm extends Component {
          </Modal.Body>
 
           <Modal.Footer>
-            <Button onClick={ () => this.create(this.state.form)}>Create</Button>
+
+            {/* Si recibo una película por props, estoy editando. Si no, estoy creando */}
+            { this.props.movie &&
+              <Button onClick={ () => this.update(this.state.form)}>Update</Button>
+            }
+            { !this.props.movie &&
+              <Button onClick={ () => this.create(this.state.form)}>Create</Button>
+            }
             <Button onClick={this.props.onHide}>Close</Button>
           </Modal.Footer>
         </Modal>
@@ -197,8 +212,6 @@ class MovieForm extends Component {
   }
 }
 
-// Cuando se ejecute addMovie, recibirá los datos por parámetro los cuales pasará a la mutation.
-// Al terminar, ejecutará de nuevo la query allMovies para actualizar la lista de películas
 const addMovieMutation = graphql(addMovie, {
   props: ({ mutate }) => ({
     addMovie: ({ title, description, poster_image, year, rating }) =>
@@ -213,7 +226,23 @@ const addMovieMutation = graphql(addMovie, {
   },
 });
 
+
+const updateMovieMutation = graphql(updateMovie, {
+  props: ({ mutate }) => ({
+    updateMovie: ({ id, title, description, poster_image, year, rating}) =>
+      mutate({
+        variables: { id, title, description, poster_image, year, rating },
+      }),
+  }),
+  options: {
+    refetchQueries: [
+      'allMovies',
+    ],
+  },
+});
+
 export default compose(
   addMovieMutation,
+  updateMovieMutation,
   withApollo,
 )(MovieForm);
