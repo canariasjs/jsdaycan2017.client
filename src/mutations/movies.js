@@ -20,3 +20,44 @@ export const addMovie = gql`
     }
   }
 `
+
+export const updateMovie = gql`
+  mutation updateMovie(
+    $id: Int!,
+    $title: String!, 
+    $description: String, 
+    $poster_image: String, 
+    $rating: Float,
+    $year: String,
+  ) {
+    updateMovie(
+    ) {
+      id,
+      title,
+    }
+  }
+`
+/*
+export const updateMovie = gql`
+  mutation updateMovie(
+    $id: Int!,
+    $title: String!, 
+    $description: String, 
+    $poster_image: String, 
+    $rating: Float,
+    $year: String,
+  ) {
+    updateMovie(
+      id: $id,
+      title: $title,
+      description: $description,
+      poster_image: $poster_image,
+      rating: $rating,
+      year: $year,
+    ) {
+      id,
+      title,
+    }
+  }
+`
+*/
