@@ -112,3 +112,14 @@ La mutation la hemos definido en mutations/movies.js de forma que está lista pa
 
 Por ultimo, a la hora de exportar el container movieForm hemos definido que tras ejecutar la mutation, ejecutaremos de nuevo la query allMovies para refrescar
 automaticamente nuestra lista de películas.
+
+# Paso 9
+
+En este paso hemos definido una nueva mutation que nos permitirá actualizar una película.
+En el formulario hemos definido otro boton y hemos aplicado una lógica que mostrará el boton crear o el boton actualizar dependiendo de si recibimos una película por
+props o no.
+
+Posteriormente, hemos definido la mutation al igual que la anterior y la hemos conectado al container.
+
+Dado que en el paso 8 ya vistes como se define una mutation, se plantea el siguiente ejercicio:
+- Actualiza la mutation updateMovie de forma que puedas enviarle a la API los valores que recibes por parámetro desde el componente container.
