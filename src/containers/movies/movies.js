@@ -5,7 +5,10 @@ import './movies.css';
 
 import MoviesData from './films.json';
 
+import MovieForm from '../movieForm/movieForm';
+
 import { MovieItem } from '../../components/movieItem/movieItem';
+
 
 class Movies extends Component {
 
@@ -36,6 +39,7 @@ class Movies extends Component {
             </Link>
             ) 
           }
+          <MovieForm show={this.state.showModal} onHide={this.close} />
         </div>
     );
   }
