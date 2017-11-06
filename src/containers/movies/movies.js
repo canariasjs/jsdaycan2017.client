@@ -42,17 +42,6 @@ class Movies extends Component {
               </Link>
             ) 
           }
-                    { 
-            this.props.data.allMovies.map((movie, i) => 
-              <Link className="movieItem" key={i} to={{ pathname: `/movies/${movie.id}`, state: { movie } }}>
-                <MovieItem 
-                  title={movie.title} 
-                  poster_image={movie.poster_image}
-                  rating={movie.rating}
-                />
-              </Link>
-            ) 
-          }
         </div>
         <MovieForm show={this.state.showModal} onHide={this.close} />
       </div>
