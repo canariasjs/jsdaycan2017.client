@@ -7,7 +7,7 @@ import MovieForm from '../movieForm/movieForm';
 import { MovieItem } from '../../components/movieItem/movieItem';
 
 // Herramientas del cliente apollo para conectar con el server
-import { graphql, compose, withApollo } from 'react-apollo';
+import { graphql } from 'react-apollo';
 // Query que queremos ejecutar
 import { allMovies } from '../../queries/movies';
 
