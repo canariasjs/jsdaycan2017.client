@@ -81,3 +81,15 @@ Hemos modificado el componente movieForm para que si recibe una película por pa
 Una vez tenemos cargado el movieForm desde movieDetails, y se ha modificado el form para recibir la película. Se plantéa el siguiente ejercicio:
 
 - Envíale por parámetro al MovieForm la película que estas viendo en detalles. El formulario se sobreescribirá con la pelicula que reciba por parámetro en componentWillReceiveProps()
+
+# Paso 6
+
+En este paso, modificando el archivo index.js hemos conectado nuestra aplicación con el GraphQL server que tenemos funcionando localmente.
+
+Posteriormente, hemos creado un archivo donde almacenamos todas las queries que vamos a realizar al GraphQL server.
+
+Luego hemos definido nuestra primera query, llamada allMovies. Esta querie obtendrá un array de películas del server y dichas películas
+tendrán las propiedades que nosotros hemos especificado en la query.
+
+Por último, hemos conectado nuestro container component a GraphQL para mostrar los datos recibidos de la API en vez de los datos mockeados.
+
