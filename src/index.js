@@ -6,13 +6,12 @@ import './index.css';
 import Router from './router';
 import registerServiceWorker from './registerServiceWorker';
 
-
 // GraphQL client
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 const networkInterface = createNetworkInterface({
-  uri: 'http://localhost:4500/graphql'
+  uri: 'http://localhost:4000/graphql'
 })
 const client = new ApolloClient({
   networkInterface

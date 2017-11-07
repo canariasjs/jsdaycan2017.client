@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-flow: row wrap;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 70vh; }
     .moviesContainer .list .movieItem {
       flex: 1;
